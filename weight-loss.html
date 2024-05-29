@@ -2428,70 +2428,60 @@
         });
       </script>
 
-      <script type="module">
-        import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
-
-        var swiperDemo = new Swiper(".mySwiper", {
-          effect: "cards",
-          grabCursor: true,
-          spaceBetween: 40,
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          cardsEffect: {
-            perSlideRotate: 0,
-            perSlideOffset: 20,
-          },
-          initialSlide: 1,
-        });
-      </script>
-
       <script>
-        var videos = document.querySelectorAll("video");
-        document.addEventListener("DOMContentLoaded", function () {
-          // Play the video
-          videos.forEach((video) => {
-            video.play();
-          });
-        });
+        function loadScript(src, callback) {
+          var script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = src;
+          script.onload = callback;
+          document.head.appendChild(script);
+        }
 
-        // window.addEventListener("scroll", () => {
-        //   var myRect = document
-        //     .getElementById("footer-outer")
-        //     .getBoundingClientRect();
-        //   var myHeight = myRect.height;
-        //   var myTop = myRect.top;
-        //   var pageHeight = document.body.scrollHeight;
+        // // Lazy load jQuery
+        // loadScript("./assets/jquery.js", function () {
+        //   // jQuery has been loaded, you can now load other scripts or do further initialization.
+        //   console.log("loadjQuery");
 
-        //   if (window.scrollY > pageHeight - myHeight - window.innerHeight) {
-        //     document.querySelector("#my-fixed-btn").classList.add("bg-white");
-        //     document.querySelector("#my-fixed-btn").classList.add("text-black");
-        //     document
-        //       .querySelector("#my-fixed-btn")
-        //       .classList.remove("bg-black");
-        //     document
-        //       .querySelector("#my-fixed-btn")
-        //       .classList.remove("text-white");
-        //   } else {
-        //     document
-        //       .querySelector("#my-fixed-btn")
-        //       .classList.remove("bg-white");
-        //     document
-        //       .querySelector("#my-fixed-btn")
-        //       .classList.remove("text-black");
-        //     document.querySelector("#my-fixed-btn").classList.add("bg-black");
-        //     document.querySelector("#my-fixed-btn").classList.add("text-white");
-        //   }
-
-        //   if (window.scrollY > 1000) {
-        //     document
-        //       .querySelector("#my-fixed-btn")
-        //       .classList.remove("opacity-0");
-        //   } else {
-        //     document.querySelector("#my-fixed-btn").classList.add("opacity-0");
-        //   }
+        //   loadSwiper();
         // });
+        loadSwiper();
+        function loadSwiper() {
+          // Lazy load Swiper
+          loadScript(
+            "https://unpkg.com/swiper/swiper-bundle.min.js",
+            function () {
+              // Swiper has been loaded, you can continue with your logic here.
+              initializeSwiper();
+              console.log("initializeSwiper");
+            }
+          );
+        }
+
+        function initializeSwiper() {
+          // Your Swiper initialization code goes here
+          var swiperDemo = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+            spaceBetween: 40,
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            cardsEffect: {
+              perSlideRotate: 0,
+              perSlideOffset: 20,
+            },
+            initialSlide: 1,
+          });
+
+          var videos = document.querySelectorAll("video");
+          document.addEventListener("DOMContentLoaded", function () {
+            // Play the video
+            videos.forEach((video) => {
+              video.play();
+            });
+          });
+        }
       </script>
     </div>
 
