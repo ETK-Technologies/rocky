@@ -2447,14 +2447,11 @@
         loadSwiper();
         function loadSwiper() {
           // Lazy load Swiper
-          loadScript(
-            "https://unpkg.com/swiper/swiper-bundle.min.js",
-            function () {
-              // Swiper has been loaded, you can continue with your logic here.
-              initializeSwiper();
-              console.log("initializeSwiper");
-            }
-          );
+          loadScript("./assets/swiper.js", function () {
+            // Swiper has been loaded, you can continue with your logic here.
+            initializeSwiper();
+            console.log("initializeSwiper");
+          });
         }
 
         function initializeSwiper() {
