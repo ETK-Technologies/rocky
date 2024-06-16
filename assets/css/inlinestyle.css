@@ -21309,7 +21309,7 @@ input[type=file]::file-selector-button:hover {
     .colored-title {
         font-size: 25px !important;
         text-align: center !important;
-        line-height: 0 !important;
+        line-height: initial !important;
         letter-spacing: 0 !important;
         padding: 0 !important;
         margin: 10px 0 !important
@@ -21437,7 +21437,7 @@ input[type=file]::file-selector-button:hover {
     font-style: normal;
     font-weight: 700;
     font-size: 55px;
-    line-height: 0;
+    line-height: initial;
     color: #ae7e56
 }
 
